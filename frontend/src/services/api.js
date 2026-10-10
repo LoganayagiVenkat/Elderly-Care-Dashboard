@@ -3,7 +3,10 @@
 // Handles communication with Express backend & MySQL Database
 // ============================================================
 
-const API_BASE = '/api';
+const envApiUrl = typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL ? import.meta.env.VITE_API_URL.trim() : '';
+const API_BASE = envApiUrl
+  ? (envApiUrl.endsWith('/api') ? envApiUrl : `${envApiUrl.replace(/\/$/, '')}/api`)
+  : '/api';
 
 async function request(endpoint, options = {}) {
   let userRole = null;
