@@ -1,38 +1,67 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
+import { getDatabaseConfig } from '../config/db.js';
+import { setupMessagingTables } from './setupMessagingDb.js';
 
 dotenv.config();
 
-const dbHost = process.env.DB_HOST || 'localhost';
-const dbUser = process.env.DB_USER || 'root';
-const dbPassword = process.env.DB_PASSWORD !== undefined ? process.env.DB_PASSWORD : '';
-const dbName = process.env.DB_NAME || 'eldercare_db';
-const dbPort = Number(process.env.DB_PORT) || 3306;
-
 export async function initDatabase() {
-  console.log(`[DB Init] Connecting to MySQL at ${dbHost}:${dbPort}...`);
-  const rootConn = await mysql.createConnection({
-    host: dbHost,
-    user: dbUser,
-    password: dbPassword,
-    port: dbPort,
-    connectTimeout: 2000
-  });
+  const config = getDatabaseConfig();
+  const isProduction = process.env.NODE_ENV === 'production' || !!process.env.RENDER;
 
-  await rootConn.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
-  console.log(`[DB Init] Database \`${dbName}\` ensured.`);
-  await rootConn.end();
+  if (isProduction && !config.hasRemoteHost) {
+    console.log('[DB Init] Skipping schema init: No remote MySQL database configured on Render.');
+    return;
+  }
 
-  const conn = await mysql.createConnection({
-    host: dbHost,
-    user: dbUser,
-    password: dbPassword,
-    database: dbName,
-    port: dbPort,
-    connectTimeout: 2000
-  });
+  console.log(`[DB Init] Initializing schema for database \`${config.database}\` on ${config.host}:${config.port}...`);
+  let conn = null;
 
-  console.log(`[DB Init] Creating tables in \`${dbName}\`...`);
+  try {
+    // 1. Direct connection to target database (works cleanly with cloud MySQL providers)
+    conn = await mysql.createConnection({
+      host: config.host,
+      user: config.user,
+      password: config.password,
+      database: config.database,
+      port: config.port,
+      ssl: config.ssl,
+      connectTimeout: 8000
+    });
+  } catch (directErr) {
+    // If target database doesn't exist yet, attempt to create it
+    if (directErr.code === 'ER_BAD_DB_ERROR') {
+      try {
+        console.log(`[DB Init] Database \`${config.database}\` does not exist. Creating...`);
+        const rootConn = await mysql.createConnection({
+          host: config.host,
+          user: config.user,
+          password: config.password,
+          port: config.port,
+          ssl: config.ssl,
+          connectTimeout: 8000
+        });
+        await rootConn.query(`CREATE DATABASE IF NOT EXISTS \`${config.database}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`);
+        await rootConn.end();
+
+        conn = await mysql.createConnection({
+          host: config.host,
+          user: config.user,
+          password: config.password,
+          database: config.database,
+          port: config.port,
+          ssl: config.ssl,
+          connectTimeout: 8000
+        });
+      } catch (rootErr) {
+        throw new Error(`Failed to create or access database \`${config.database}\`: ${rootErr.message}`);
+      }
+    } else {
+      throw directErr;
+    }
+  }
+
+  console.log(`[DB Init] Connected. Ensuring tables in \`${config.database}\`...`);
 
   // 1. users
   await conn.query(`
@@ -991,6 +1020,13 @@ async function seedInitialData(conn) {
         vm
       );
     }
+  }
+
+  // Ensure messaging and emergency dispatch tables
+  try {
+    await setupMessagingTables();
+  } catch (msgErr) {
+    console.warn('[DB Init] Messaging tables setup notice:', msgErr.message);
   }
 }
 

@@ -3,10 +3,16 @@
 // Handles communication with Express backend & MySQL Database
 // ============================================================
 
-const envApiUrl = typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL ? import.meta.env.VITE_API_URL.trim() : '';
-const API_BASE = envApiUrl
-  ? (envApiUrl.endsWith('/api') ? envApiUrl : `${envApiUrl.replace(/\/$/, '')}/api`)
-  : '/api';
+const rawEnvUrl = typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL
+  ? import.meta.env.VITE_API_URL.trim()
+  : '';
+
+// Strips trailing slashes and ensures /api is correctly appended without duplication
+const API_BASE = (() => {
+  if (!rawEnvUrl) return '/api';
+  const trimmed = rawEnvUrl.replace(/\/+$/, '');
+  return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
+})();
 
 async function request(endpoint, options = {}) {
   let userRole = null;
@@ -51,8 +57,10 @@ async function request(endpoint, options = {}) {
     config.body = JSON.stringify(config.body);
   }
 
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+
   try {
-    const res = await fetch(`${API_BASE}${endpoint}`, config);
+    const res = await fetch(`${API_BASE}${cleanEndpoint}`, config);
     const data = await res.json();
     if (!res.ok) {
       const err = new Error(data.message || `Request failed with status ${res.status}`);
