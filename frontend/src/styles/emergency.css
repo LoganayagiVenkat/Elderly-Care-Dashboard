@@ -1,0 +1,396 @@
+/* ==========================================================================
+   Page 2: Emergency Contacts & Alerts Styles
+   Matches Reference Mockup (3-Column Clean Card Layout, Mint & Dark Green)
+   ========================================================================== */
+
+.emergency-page-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr 360px;
+  gap: 20px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 1200px) {
+  .emergency-page-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .emergency-page-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card Container */
+.emergency-card {
+  background: var(--surface-card, #FFFFFF);
+  border: 1px solid var(--border-hairline, #E2E8E5);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(10, 55, 40, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.emergency-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-hairline, #E2E8E5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.emergency-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emergency-card-title h3 {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text-primary, #111827);
+  margin: 0;
+}
+
+.emergency-title-icon-red {
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+}
+
+.emergency-title-icon-clock {
+  color: #475569;
+  display: flex;
+  align-items: center;
+}
+
+/* Column 1: Contacts Directory */
+.emergency-contacts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.emergency-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid #F2F5F3;
+  transition: background 0.15s ease;
+}
+
+.emergency-contact-item:hover {
+  background: #F8FAF9;
+}
+
+.emergency-contact-info-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.emergency-contact-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.emergency-contact-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.emergency-contact-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.emergency-contact-phone {
+  font-size: 12px;
+  color: var(--text-secondary, #64748B);
+}
+
+.emergency-contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+}
+
+.emergency-icon-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #E2E8E5;
+  background: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.emergency-icon-action-btn.call {
+  color: #475569;
+}
+.emergency-icon-action-btn.call:hover {
+  background: #F1F5F9;
+  color: #111827;
+}
+
+.emergency-icon-action-btn.whatsapp {
+  color: #0F5132;
+  background: #E8F5EE;
+  border-color: #D1E7DD;
+}
+.emergency-icon-action-btn.whatsapp:hover {
+  background: #0F5132;
+  color: #FFFFFF;
+}
+
+/* Column 2: Send Emergency Message */
+.emergency-composer-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.composer-toggle-tabs {
+  display: flex;
+  background: #F1F5F3;
+  padding: 4px;
+  border-radius: 10px;
+  gap: 4px;
+}
+
+.composer-toggle-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748B;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.composer-toggle-tab.active {
+  background: #FFFFFF;
+  color: #0F5132;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.composer-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.composer-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.composer-select, .composer-input {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #E2E8E5;
+  background: #FFFFFF;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.composer-select:focus, .composer-input:focus {
+  border-color: #0F5132;
+  box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.1);
+}
+
+.template-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.template-pill {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border: 1px solid #E2E8E5;
+  background: #F8FAF9;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.template-pill:hover {
+  background: #FFFFFF;
+}
+
+.template-pill.active.pill-med {
+  background: #FDE8E8;
+  color: #DC2626;
+  border-color: #F87171;
+}
+
+.template-pill.active.pill-fall {
+  background: #F3E8FF;
+  color: #7E22CE;
+  border-color: #C084FC;
+}
+
+.template-pill.active.pill-unresp {
+  background: #E0E7FF;
+  color: #4338CA;
+  border-color: #818CF8;
+}
+
+.template-pill.active.pill-hosp {
+  background: #E0F2FE;
+  color: #0369A1;
+  border-color: #38BDF8;
+}
+
+.composer-textarea {
+  min-height: 100px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #E2E8E5;
+  background: #FFFFFF;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+}
+
+.composer-textarea:focus {
+  border-color: #0F5132;
+  box-shadow: 0 0 0 3px rgba(15, 81, 50, 0.1);
+}
+
+.composer-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.btn-send-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #0F5132;
+  color: #FFFFFF;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 8px rgba(15, 81, 50, 0.25);
+}
+
+.btn-send-whatsapp:hover:not(:disabled) {
+  background: #0A3728;
+  transform: translateY(-1px);
+}
+
+.btn-send-whatsapp:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Column 3: Recent Emergency Messages */
+.recent-emergency-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-emergency-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid #F2F5F3;
+  transition: background 0.15s ease;
+}
+
+.recent-emergency-item:hover {
+  background: #F8FAF9;
+}
+
+.recent-emergency-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.recent-emergency-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.recent-emergency-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recent-emergency-tag {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #FDE8E8;
+  color: #DC2626;
+  white-space: nowrap;
+}
+
+.recent-emergency-msg {
+  font-size: 12px;
+  color: var(--text-secondary, #64748B);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.recent-emergency-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #94A3B8;
+}

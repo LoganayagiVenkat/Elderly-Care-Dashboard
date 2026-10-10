@@ -1,0 +1,10 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: eldercare-frontend:latest
+    container_name: eldercare_frontend
+    ports:
+      - "80:80"
+    restart: unless-stopped

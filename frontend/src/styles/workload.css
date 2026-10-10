@@ -1,0 +1,908 @@
+/* ============================================================
+   ElderCare — Caregiver Workload Balancer Stylesheet
+   Strict adherence to the ElderCare Green Healthcare Design System.
+   Primary Green: #2F6F5E | Deep: #245548 | Muted: #6F9F91
+   Soft Green: #E8F1EE | Bg: #F7F9F8 | Text: #263331 | Border: #DCE6E2
+   ============================================================ */
+
+:root {
+  --wb-primary: #2F6F5E;
+  --wb-primary-hover: #26594B;
+  --wb-deep: #245548;
+  --wb-muted: #6F9F91;
+  --wb-soft: #E8F1EE;
+  --wb-bg: #F7F9F8;
+  --wb-white: #FFFFFF;
+  --wb-text: #263331;
+  --wb-muted-text: #6B7773;
+  --wb-border: #DCE6E2;
+  --wb-border-light: #EDF3F0;
+
+  /* Level Colors */
+  --wb-low-bg: #E8F1EE;
+  --wb-low-fg: #245548;
+  --wb-low-border: #6F9F91;
+  --wb-low-bar: #2F6F5E;
+
+  --wb-mod-bg: #FEF3C7;
+  --wb-mod-fg: #92400E;
+  --wb-mod-border: #FCD34D;
+  --wb-mod-bar: #D97706;
+
+  --wb-high-bg: #FEE2E2;
+  --wb-high-fg: #991B1B;
+  --wb-high-border: #FCA5A5;
+  --wb-high-bar: #DC2626;
+
+  --wb-shadow-sm: 0 1px 3px rgba(36, 85, 72, 0.06), 0 1px 2px rgba(36, 85, 72, 0.04);
+  --wb-shadow-md: 0 4px 12px rgba(36, 85, 72, 0.08), 0 2px 4px rgba(36, 85, 72, 0.04);
+  --wb-shadow-lg: 0 10px 25px -5px rgba(36, 85, 72, 0.12), 0 8px 10px -6px rgba(36, 85, 72, 0.04);
+}
+
+/* ------------------------------------------------------------
+   Main Container & View Switcher
+   ------------------------------------------------------------ */
+.workload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: wbFadeIn 250ms ease-out;
+}
+
+@keyframes wbFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tab Navigation Switcher */
+.caregivers-nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid var(--wb-border);
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  overflow-x: auto;
+}
+
+.caregivers-nav-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--wb-muted-text);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: all 180ms ease;
+  white-space: nowrap;
+}
+
+.caregivers-nav-tab:hover {
+  color: var(--wb-primary);
+  background: rgba(47, 111, 94, 0.04);
+  border-radius: 6px 6px 0 0;
+}
+
+.caregivers-nav-tab.active {
+  color: var(--wb-deep);
+  border-bottom-color: var(--wb-primary);
+  font-weight: 700;
+}
+
+.caregivers-nav-tab .tab-badge {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 12px;
+  background: var(--wb-soft);
+  color: var(--wb-deep);
+  font-weight: 700;
+}
+
+.caregivers-nav-tab .tab-badge.alert {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+/* ------------------------------------------------------------
+   Header & Action Bar
+   ------------------------------------------------------------ */
+.wb-header-panel {
+  background: var(--wb-white);
+  border: 1px solid var(--wb-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: var(--wb-shadow-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.wb-title-group h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--wb-text);
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wb-title-group p {
+  font-size: 13.5px;
+  color: var(--wb-muted-text);
+  margin: 0;
+}
+
+.wb-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   Imbalance Alert Banner
+   ------------------------------------------------------------ */
+.wb-imbalance-banner {
+  background: #FFFBEB;
+  border: 1px solid #FCD34D;
+  border-left: 4px solid #D97706;
+  border-radius: 10px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  box-shadow: var(--wb-shadow-sm);
+  transition: box-shadow 200ms ease;
+}
+
+.wb-imbalance-banner.high-severity {
+  background: #FEF2F2;
+  border-color: #FCA5A5;
+  border-left-color: #DC2626;
+}
+
+.wb-imbalance-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wb-imbalance-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(217, 119, 6, 0.12);
+  color: #D97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wb-imbalance-banner.high-severity .wb-imbalance-icon {
+  background: rgba(220, 38, 38, 0.12);
+  color: #DC2626;
+}
+
+.wb-imbalance-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--wb-text);
+  margin-bottom: 2px;
+}
+
+.wb-imbalance-desc {
+  font-size: 13px;
+  color: var(--wb-muted-text);
+}
+
+/* ------------------------------------------------------------
+   Metrics & KPI Overview Cards
+   ------------------------------------------------------------ */
+.wb-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.wb-kpi-card {
+  background: var(--wb-white);
+  border: 1px solid var(--wb-border);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: var(--wb-shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.wb-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--wb-shadow-md);
+}
+
+.wb-kpi-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--wb-soft);
+  color: var(--wb-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wb-kpi-icon.warning {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.wb-kpi-icon.amber {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.wb-kpi-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--wb-muted-text);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.wb-kpi-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--wb-text);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.wb-kpi-sub {
+  font-size: 11.5px;
+  color: var(--wb-muted-text);
+  margin-top: 2px;
+}
+
+/* ------------------------------------------------------------
+   Horizontal Comparison & Visualization Panel
+   ------------------------------------------------------------ */
+.wb-viz-panel {
+  background: var(--wb-white);
+  border: 1px solid var(--wb-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: var(--wb-shadow-sm);
+}
+
+.wb-viz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.wb-viz-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--wb-text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wb-distribution-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wb-dist-pill {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.wb-dist-pill.low {
+  background: var(--wb-low-bg);
+  color: var(--wb-low-fg);
+  border: 1px solid var(--wb-low-border);
+}
+
+.wb-dist-pill.moderate {
+  background: var(--wb-mod-bg);
+  color: var(--wb-mod-fg);
+  border: 1px solid var(--wb-mod-border);
+}
+
+.wb-dist-pill.high {
+  background: var(--wb-high-bg);
+  color: var(--wb-high-fg);
+  border: 1px solid var(--wb-high-border);
+}
+
+.wb-comparison-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.wb-comparison-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 140px 110px;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--wb-bg);
+  border: 1px solid var(--wb-border-light);
+  transition: all 180ms ease;
+  cursor: pointer;
+}
+
+.wb-comparison-row:hover {
+  background: #FFFFFF;
+  border-color: var(--wb-muted);
+  box-shadow: var(--wb-shadow-sm);
+  transform: translateX(2px);
+}
+
+.wb-row-caregiver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.wb-row-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--wb-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wb-row-role {
+  font-size: 11px;
+  color: var(--wb-muted-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wb-bar-track {
+  height: 10px;
+  border-radius: 5px;
+  background: #E5E7EB;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.wb-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 350ms ease-out;
+}
+
+.wb-bar-fill.low { background: var(--wb-low-bar); }
+.wb-bar-fill.moderate { background: var(--wb-mod-bar); }
+.wb-bar-fill.high { background: var(--wb-high-bar); }
+
+.wb-row-stats {
+  font-size: 11.5px;
+  color: var(--wb-muted-text);
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.wb-row-stats strong {
+  color: var(--wb-text);
+}
+
+.wb-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.wb-badge.low {
+  background: var(--wb-low-bg);
+  color: var(--wb-low-fg);
+  border: 1px solid var(--wb-low-border);
+}
+
+.wb-badge.moderate {
+  background: var(--wb-mod-bg);
+  color: var(--wb-mod-fg);
+  border: 1px solid var(--wb-mod-border);
+}
+
+.wb-badge.high {
+  background: var(--wb-high-bg);
+  color: var(--wb-high-fg);
+  border: 1px solid var(--wb-high-border);
+}
+
+/* ------------------------------------------------------------
+   Care Team Workload Cards Grid
+   ------------------------------------------------------------ */
+.wb-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.wb-card {
+  background: var(--wb-white);
+  border: 1px solid var(--wb-border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--wb-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 200ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.wb-card:hover {
+  border-color: var(--wb-muted);
+  box-shadow: var(--wb-shadow-md);
+  transform: translateY(-2px);
+}
+
+.wb-card.is-high {
+  border-top: 3px solid #DC2626;
+}
+
+.wb-card.is-moderate {
+  border-top: 3px solid #D97706;
+}
+
+.wb-card.is-low {
+  border-top: 3px solid var(--wb-primary);
+}
+
+.wb-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.wb-card-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wb-card-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--wb-text);
+  margin-bottom: 2px;
+}
+
+.wb-card-role {
+  font-size: 12.5px;
+  color: var(--wb-muted-text);
+}
+
+/* Overload Warning Banner inside card */
+.wb-overload-alert {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  color: #991B1B;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+
+.wb-overload-alert strong {
+  font-weight: 700;
+  color: #7F1D1D;
+}
+
+/* Card metrics table */
+.wb-card-metrics {
+  background: var(--wb-bg);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wb-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+}
+
+.wb-metric-label {
+  color: var(--wb-muted-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wb-metric-val {
+  font-weight: 600;
+  color: var(--wb-text);
+}
+
+.wb-metric-val.alert {
+  color: #DC2626;
+  font-weight: 700;
+}
+
+/* Card Capacity Progress Bar */
+.wb-capacity-block {
+  margin-bottom: 16px;
+}
+
+.wb-capacity-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11.5px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--wb-muted-text);
+}
+
+.wb-capacity-score {
+  font-weight: 700;
+  color: var(--wb-text);
+}
+
+/* Card Footer Actions */
+.wb-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid var(--wb-border-light);
+  padding-top: 14px;
+}
+
+.wb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 180ms ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.wb-btn-primary {
+  background: var(--wb-primary);
+  color: #FFFFFF;
+}
+
+.wb-btn-primary:hover {
+  background: var(--wb-primary-hover);
+  box-shadow: 0 2px 8px rgba(47, 111, 94, 0.25);
+}
+
+.wb-btn-secondary {
+  background: var(--wb-soft);
+  color: var(--wb-deep);
+  border-color: var(--wb-border);
+}
+
+.wb-btn-secondary:hover {
+  background: #DCEBE6;
+  color: var(--wb-deep);
+}
+
+.wb-btn-outline {
+  background: transparent;
+  color: var(--wb-deep);
+  border-color: var(--wb-border);
+}
+
+.wb-btn-outline:hover {
+  background: var(--wb-soft);
+  border-color: var(--wb-muted);
+}
+
+.wb-btn-sm {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.wb-btn-block {
+  width: 100%;
+}
+
+/* ------------------------------------------------------------
+   Modal Windows (Details, Assign, Rebalance)
+   ------------------------------------------------------------ */
+.wb-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: wbFadeIn 180ms ease-out;
+}
+
+.wb-modal-content {
+  background: var(--wb-white);
+  border: 1px solid var(--wb-border);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--wb-shadow-lg);
+  overflow: hidden;
+  animation: wbScaleUp 200ms ease-out;
+}
+
+@keyframes wbScaleUp {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.wb-modal-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--wb-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FCFDFD;
+}
+
+.wb-modal-header h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--wb-text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wb-modal-close {
+  background: transparent;
+  border: none;
+  color: var(--wb-muted-text);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 150ms ease;
+}
+
+.wb-modal-close:hover {
+  background: var(--wb-soft);
+  color: var(--wb-text);
+}
+
+.wb-modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.wb-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--wb-border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background: #FCFDFD;
+}
+
+/* ------------------------------------------------------------
+   Caregiver Breakdown Modal Specifics
+   ------------------------------------------------------------ */
+.wb-breakdown-formula-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.wb-breakdown-formula-table th {
+  text-align: left;
+  padding: 8px 10px;
+  background: var(--wb-bg);
+  color: var(--wb-muted-text);
+  font-weight: 600;
+  border-bottom: 1px solid var(--wb-border);
+}
+
+.wb-breakdown-formula-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--wb-border-light);
+  color: var(--wb-text);
+}
+
+.wb-breakdown-formula-table tr.total-row td {
+  border-top: 2px solid var(--wb-border);
+  font-weight: 700;
+  background: var(--wb-soft);
+}
+
+.wb-tabs-nav {
+  display: flex;
+  border-bottom: 1px solid var(--wb-border);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.wb-tab-btn {
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--wb-muted-text);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wb-tab-btn.active {
+  color: var(--wb-primary);
+  border-bottom-color: var(--wb-primary);
+}
+
+.wb-task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid var(--wb-border-light);
+  border-radius: 8px;
+  background: #FFFFFF;
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+.wb-task-item.is-overdue {
+  border-color: #FCA5A5;
+  background: #FEF2F2;
+}
+
+.wb-task-item.is-done {
+  opacity: 0.7;
+}
+
+/* ------------------------------------------------------------
+   Task Assignment Modal Specifics
+   ------------------------------------------------------------ */
+.wb-caregiver-picker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--wb-border);
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.wb-caregiver-picker-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 150ms ease;
+}
+
+.wb-caregiver-picker-item:hover {
+  background: var(--wb-bg);
+}
+
+.wb-caregiver-picker-item.selected {
+  background: var(--wb-soft);
+  border-color: var(--wb-primary);
+}
+
+.wb-suggested-banner {
+  background: var(--wb-soft);
+  border: 1px solid var(--wb-muted);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* ------------------------------------------------------------
+   Responsive Breakpoints
+   ------------------------------------------------------------ */
+@media (max-width: 900px) {
+  .wb-comparison-row {
+    grid-template-columns: 160px 1fr 100px;
+  }
+  .wb-comparison-row .wb-row-stats {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .wb-header-panel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .wb-actions-group {
+    width: 100%;
+  }
+  .wb-actions-group .wb-btn {
+    flex: 1;
+  }
+  .wb-comparison-row {
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+  }
+  .wb-comparison-row .wb-bar-track {
+    display: none;
+  }
+  .wb-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

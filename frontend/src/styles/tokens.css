@@ -1,0 +1,880 @@
+:root {
+  /* ==========================================================================
+     Brand Palette: Professional Dark-Green & Soft Mint Healthcare (UI Mockup)
+     ========================================================================== */
+  --color-forest-deep: #0A3728; /* Professional Dark Forest Green */
+  --color-forest: #0F5132;      /* Rich Healthcare Green */
+  --color-forest-hover: #0B4027;
+  --color-sage: #2D6A4F;        /* Mid Sage Green */
+  --color-mint: #E8F5EE;        /* Soft Mint Accent Pill */
+  --color-mint-light: #F2F9F5;  /* Subtle Mint Wash */
+  --color-mint-bubble: #D9F2E6; /* Outgoing WhatsApp Chat Bubble */
+  --color-ivory: #F8FAF9;       /* Crisp Clean Canvas */
+  --color-beige: #E8F5EE;       /* Soft Mint Tint */
+  --color-terracotta: #0F5132;  /* Primary Action Green */
+  --color-terracotta-dark: #0A3728;
+  --color-charcoal: #111827;     /* High Contrast Text */
+
+  --color-tint: #E8F5EE;
+  --color-forest-focus-ring: rgba(15, 81, 50, 0.22);
+  --color-primary-shadow: 0 4px 14px rgba(15, 81, 50, 0.22);
+  --color-primary-shadow-hover: 0 6px 20px rgba(15, 81, 50, 0.32);
+
+  /* ---- Derived surfaces ---- */
+  --surface-app: #F4F7F6;
+  --surface-card: #FFFFFF;
+  --surface-card-alt: #F8FAF9;
+  --surface-sidebar: #0A3728;   /* Professional Dark Green Sidebar */
+  --surface-sunken: #E5EBE8;
+  --border-hairline: #E2E8E5;
+  --border-hairline-strong: #CBD5D0;
+
+  /* ---- Sidebar Specific Tokens ---- */
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-heading: #FFFFFF;
+  --sidebar-text: #B4CEBF;
+  --sidebar-text-muted: #7E9E8D;
+  --sidebar-link-hover-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-link-active-bg: #E8F5EE;    /* Soft Mint Green Active Pill */
+  --sidebar-link-active-text: #0A3728;  /* Dark Forest Green Text */
+  --sidebar-link-active-icon: #0A3728;  /* Dark Forest Green Icon */
+  --sidebar-link-active-glow: #10B981;
+
+  /* ---- Dashboard Welcome Banner ---- */
+  --banner-bg: linear-gradient(115deg, #07261B 0%, #0A3728 35%, #0F5132 65%, #157347 100%);
+  --banner-border: 1px solid rgba(255, 255, 255, 0.15);
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #D1E7DD;
+  --banner-eyebrow: #FBBF24;
+  --banner-glow: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+
+  /* ---- Text ---- */
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-muted: #E2E8F0;
+  --color-heading: #0F172A;
+
+  /* ---- Status indicators ---- */
+  --status-stable-bg: #DCFCE7;
+  --status-stable-fg: #15803D;
+  --status-attention-bg: #FEF3C7;
+  --status-attention-fg: #B45309;
+  --status-critical-bg: #FEE2E2;
+  --status-critical-fg: #DC2626;
+  --status-neutral-bg: #F1F5F9;
+  --status-neutral-fg: #475569;
+
+  /* ---- Modern Typography ---- */
+  --font-display: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+
+  /* ---- Radius & shadow ---- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --shadow-soft: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.03);
+  --shadow-lift: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+
+  /* ---- Layout ---- */
+  --sidebar-width: 264px;
+  --sidebar-width-collapsed: 76px;
+  --header-height: 72px;
+  --content-max: 1320px;
+}
+
+/* ==========================================================================
+   THEME 0: Deep Navy & Royal Blue Healthcare (User's Exact Reference Screenshot)
+   ========================================================================== */
+html[data-color-theme="oceanic"] {
+  --color-forest-deep: #0B192C;
+  --color-forest: #0066CC;
+  --color-forest-hover: #0052A3;
+  --color-sage: #0284C7;
+  --color-ivory: #F0F4F8;
+  --color-beige: #E1F0FF;
+  --color-terracotta: #0066CC;
+  --color-terracotta-dark: #0052A3;
+  --color-charcoal: #0F172A;
+
+  --color-tint: #E0F2FE;
+  --color-forest-focus-ring: rgba(0, 102, 204, 0.22);
+  --color-primary-shadow: 0 4px 14px rgba(0, 102, 204, 0.28);
+  --color-primary-shadow-hover: 0 6px 20px rgba(0, 102, 204, 0.38);
+
+  --surface-app: #F0F4F8;
+  --surface-card: #FFFFFF;
+  --surface-card-alt: #F8FAFC;
+  --surface-sidebar: #0B192C;
+  --surface-sunken: #E2E8F0;
+  --border-hairline: #E2E8F0;
+  --border-hairline-strong: #CBD5E1;
+
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-heading: #FFFFFF;
+  --sidebar-text: #94A3B8;
+  --sidebar-text-muted: #64748B;
+  --sidebar-link-hover-bg: rgba(255, 255, 255, 0.08);
+  --sidebar-link-active-bg: #0066CC;
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #FFFFFF;
+  --sidebar-link-active-glow: #38BDF8;
+
+  --banner-bg: linear-gradient(115deg, #073B6C 0%, #0A4E8C 35%, #0F68B6 65%, #197FD4 100%);
+  --banner-border: 1px solid rgba(255, 255, 255, 0.15);
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #E0F2FE;
+  --banner-eyebrow: #FBBF24;
+  --banner-glow: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --color-heading: #0F172A;
+}
+
+html[data-color-theme="oceanic"][data-theme="dark"] {
+  --color-forest-deep: #070F1A;
+  --color-forest: #38BDF8;
+  --color-forest-hover: #7DD3FC;
+  --color-sage: #38BDF8;
+  --color-ivory: #070F1A;
+  --color-beige: #0F1D32;
+  --color-terracotta: #38BDF8;
+  --color-terracotta-dark: #0284C7;
+  --color-charcoal: #F8FAFC;
+  --color-heading: #F8FAFC;
+
+  --color-tint: rgba(56, 189, 248, 0.15);
+  --color-forest-focus-ring: rgba(56, 189, 248, 0.35);
+  --color-primary-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+  --color-primary-shadow-hover: 0 6px 20px rgba(56, 189, 248, 0.5);
+
+  --surface-app: #070F1A;
+  --surface-card: #0D1B2D;
+  --surface-card-alt: #13243C;
+  --surface-sidebar: #060D17;
+  --surface-sunken: #13243C;
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-hairline-strong: rgba(255, 255, 255, 0.15);
+
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-heading: #F8FAFC;
+  --sidebar-text: #94A3B8;
+  --sidebar-text-muted: #64748B;
+  --sidebar-link-hover-bg: rgba(255, 255, 255, 0.05);
+  --sidebar-link-active-bg: #0066CC;
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #FFFFFF;
+  --sidebar-link-active-glow: #38BDF8;
+
+  --banner-bg: linear-gradient(115deg, #052647 0%, #073B6C 40%, #0C5A9E 100%);
+  --banner-border: 1px solid rgba(56, 189, 248, 0.25);
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #BAE6FD;
+  --banner-eyebrow: #FBBF24;
+  --banner-glow: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 70%);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+}
+
+/* ==========================================================================
+   THEME 1: Electric Indigo & Aurora Violet
+   ========================================================================== */
+html[data-color-theme="indigo"] {
+  --color-forest-deep: #1E1B4B;
+  --color-forest: #4F46E5;
+  --color-forest-hover: #4338CA;
+  --color-sage: #8B5CF6;
+  --color-ivory: #F8FAFC;
+  --color-beige: #EEF2FF;
+  --color-terracotta: #6366F1;
+  --color-terracotta-dark: #4F46E5;
+  --color-charcoal: #0F172A;
+
+  --color-tint: #EEF2FF;
+  --color-forest-focus-ring: rgba(79, 70, 229, 0.22);
+  --color-primary-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+  --color-primary-shadow-hover: 0 6px 20px rgba(79, 70, 229, 0.45);
+
+  --surface-app: #F8FAFC;
+  --surface-card: #FFFFFF;
+  --surface-card-alt: #F1F5F9;
+  --surface-sidebar: #FFFFFF;
+  --surface-sunken: #F1F5F9;
+  --border-hairline: #E2E8F0;
+  --border-hairline-strong: #CBD5E1;
+
+  --sidebar-border: #E2E8F0;
+  --sidebar-heading: #0F172A;
+  --sidebar-text: #475569;
+  --sidebar-text-muted: #94A3B8;
+  --sidebar-link-hover-bg: #F1F5F9;
+  --sidebar-link-active-bg: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+  --sidebar-link-active-text: #4338CA;
+  --sidebar-link-active-icon: #4F46E5;
+  --sidebar-link-active-glow: #4F46E5;
+
+  --banner-bg: linear-gradient(135deg, #4F46E5 0%, #6366F1 45%, #7C3AED 100%);
+  --banner-border: 1px solid rgba(255, 255, 255, 0.15);
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #E0E7FF;
+  --banner-eyebrow: #A5F3FC;
+  --banner-glow: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --color-heading: #0F172A;
+}
+
+html[data-color-theme="indigo"][data-theme="dark"],
+html:not([data-color-theme])[data-theme="dark"] {
+  --color-forest-deep: #0B0F19;
+  --color-forest: #6366F1;
+  --color-forest-hover: #818CF8;
+  --color-sage: #A78BFA;
+  --color-ivory: #0B0F19;
+  --color-beige: #161F30;
+  --color-terracotta: #818CF8;
+  --color-terracotta-dark: #6366F1;
+  --color-charcoal: #F8FAFC;
+  --color-heading: #F8FAFC;
+
+  --color-tint: rgba(99, 102, 241, 0.15);
+  --color-forest-focus-ring: rgba(99, 102, 241, 0.35);
+  --color-primary-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  --color-primary-shadow-hover: 0 6px 20px rgba(99, 102, 241, 0.55);
+
+  --surface-app: #0B0F19;
+  --surface-card: #111827;
+  --surface-card-alt: #161F30;
+  --surface-sidebar: #0E131F;
+  --surface-sunken: #161F30;
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-hairline-strong: rgba(255, 255, 255, 0.15);
+
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-heading: #F8FAFC;
+  --sidebar-text: #94A3B8;
+  --sidebar-text-muted: #64748B;
+  --sidebar-link-hover-bg: rgba(255, 255, 255, 0.05);
+  --sidebar-link-active-bg: rgba(99, 102, 241, 0.2);
+  --sidebar-link-active-text: #A5B4FC;
+  --sidebar-link-active-icon: #818CF8;
+  --sidebar-link-active-glow: #818CF8;
+
+  --banner-bg: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4C1D95 100%);
+  --banner-border: 1px solid rgba(99, 102, 241, 0.3);
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #C7D2FE;
+  --banner-eyebrow: #67E8F9;
+  --banner-glow: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent 70%);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+}
+
+/* ==========================================================================
+   THEME 1: Warm Linen & Terracotta (Reference Design)
+   ========================================================================== */
+html[data-color-theme="terracotta"] {
+  --color-forest-deep: #2D231E;
+  --color-forest: #C86545;
+  --color-forest-hover: #B25435;
+  --color-sage: #E8A58D;
+  --color-ivory: #FAF7F2;
+  --color-beige: #F4EDE2;
+  --color-terracotta: #C86545;
+  --color-terracotta-dark: #A64F30;
+  --color-charcoal: #2D231E;
+
+  --color-tint: #F7EDE3;
+  --color-forest-focus-ring: rgba(200, 101, 69, 0.18);
+  --color-primary-shadow: 0 2px 8px rgba(184, 91, 56, 0.22);
+  --color-primary-shadow-hover: 0 4px 14px rgba(184, 91, 56, 0.32);
+
+  --surface-app: var(--color-ivory);
+  --surface-card: #FFFFFF;
+  --surface-card-alt: #F8F3EC;
+  --surface-sidebar: #FAF7F2;
+  --surface-sunken: #F2EBE1;
+  --border-hairline: #EFE8DE;
+  --border-hairline-strong: #DDD4C7;
+
+  --sidebar-border: #EFE8DE;
+  --sidebar-heading: #2D231E;
+  --sidebar-text: #5F554D;
+  --sidebar-text-muted: #8C8176;
+  --sidebar-link-hover-bg: #F5EDE2;
+  --sidebar-link-active-bg: #F3E5D8;
+  --sidebar-link-active-text: #2D231E;
+  --sidebar-link-active-icon: #C86545;
+  --sidebar-link-active-glow: #C86545;
+
+  --banner-bg: linear-gradient(135deg, #F8EFE6 0%, #EFE3D5 50%, #F6ECE2 100%);
+  --banner-border: 1px solid #EFE8DE;
+  --banner-text: #2D231E;
+  --banner-text-muted: #5F554D;
+  --banner-eyebrow: #8C6855;
+  --banner-glow: radial-gradient(circle, rgba(200, 101, 69, 0.12), transparent 70%);
+
+  --text-primary: var(--color-charcoal);
+  --text-secondary: #5F554D;
+  --text-muted: #8C8176;
+  --color-heading: var(--color-forest-deep);
+}
+
+html[data-color-theme="terracotta"][data-theme="dark"] {
+  --color-forest-deep: #120E0B;
+  --color-forest: #E07A5A;
+  --color-forest-hover: #F08E70;
+  --color-sage: #F08E70;
+  --color-ivory: #17120E;
+  --color-beige: #221B16;
+  --color-terracotta: #E07A5A;
+  --color-terracotta-dark: #C86545;
+  --color-charcoal: #FAF7F2;
+  --color-heading: #FAF7F2;
+
+  --color-tint: #2C2018;
+  --color-forest-focus-ring: rgba(224, 122, 90, 0.25);
+  --color-primary-shadow: 0 2px 8px rgba(224, 122, 90, 0.3);
+  --color-primary-shadow-hover: 0 4px 14px rgba(224, 122, 90, 0.4);
+
+  --surface-app: #17120E;
+  --surface-card: #221B16;
+  --surface-card-alt: #2B221C;
+  --surface-sidebar: #1A1410;
+  --surface-sunken: #2D231B;
+  --border-hairline: #382C25;
+  --border-hairline-strong: #524036;
+
+  --sidebar-border: #382C25;
+  --sidebar-heading: #FAF7F2;
+  --sidebar-text: #C9BFB5;
+  --sidebar-text-muted: #94877D;
+  --sidebar-link-hover-bg: #2E231C;
+  --sidebar-link-active-bg: #3D2C22;
+  --sidebar-link-active-text: #FAF7F2;
+  --sidebar-link-active-icon: #E07A5A;
+  --sidebar-link-active-glow: #E07A5A;
+
+  --banner-bg: linear-gradient(135deg, #2B211A 0%, #221A14 100%);
+  --banner-border: 1px solid #382C25;
+  --banner-text: #FAF7F2;
+  --banner-text-muted: #C9BFB5;
+  --banner-eyebrow: #E07A5A;
+  --banner-glow: radial-gradient(circle, rgba(224, 122, 90, 0.15), transparent 70%);
+
+  --text-primary: #FAF7F2;
+  --text-secondary: #C9BFB5;
+  --text-muted: #94877D;
+}
+
+/* ==========================================================================
+   THEME 2: Emerald & Forest Green (Health & Wellness)
+   ========================================================================== */
+html[data-color-theme="emerald"] {
+  --color-forest-deep: #064E3B;
+  --color-forest: #059669;
+  --color-forest-hover: #047857;
+  --color-sage: #A7F3D0;
+  --color-ivory: #F4FBF7;
+  --color-beige: #E6F7ED;
+  --color-terracotta: #D97706;
+  --color-terracotta-dark: #B45309;
+  --color-charcoal: #0F291E;
+
+  --color-tint: #ECFDF5;
+  --color-forest-focus-ring: rgba(5, 150, 105, 0.18);
+  --color-primary-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+  --color-primary-shadow-hover: 0 4px 14px rgba(5, 150, 105, 0.35);
+
+  --surface-app: var(--color-ivory);
+  --surface-card: #FFFFFF;
+  --surface-card-alt: var(--color-beige);
+  --surface-sidebar: #064E3B;
+  --surface-sunken: #E3F2E9;
+  --border-hairline: #D1E7DA;
+  --border-hairline-strong: #A3D3B5;
+
+  --sidebar-border: rgba(255,255,255,0.08);
+  --sidebar-heading: #F8FAFC;
+  --sidebar-text: #A1BFB2;
+  --sidebar-text-muted: #A1BFB2;
+  --sidebar-link-hover-bg: rgba(255,255,255,0.06);
+  --sidebar-link-active-bg: rgba(5, 150, 105, 0.28);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #34D399;
+  --sidebar-link-active-glow: #34D399;
+
+  --banner-bg: linear-gradient(120deg, #064E3B, #059669);
+  --banner-border: none;
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #D1E7DA;
+  --banner-eyebrow: #A7F3D0;
+  --banner-glow: radial-gradient(circle, rgba(167, 243, 208, 0.25), transparent 70%);
+
+  --text-primary: var(--color-charcoal);
+  --text-secondary: #335345;
+  --text-muted: #5F7D70;
+  --color-heading: var(--color-forest-deep);
+}
+
+html[data-color-theme="emerald"][data-theme="dark"] {
+  --color-forest-deep: #022C22;
+  --color-forest: #10B981;
+  --color-forest-hover: #34D399;
+  --color-sage: #34D399;
+  --color-ivory: #051410;
+  --color-beige: #09211A;
+  --color-terracotta: #FBBF24;
+  --color-terracotta-dark: #F59E0B;
+  --color-charcoal: #ECFDF5;
+  --color-heading: #ECFDF5;
+
+  --color-tint: #0B251E;
+  --color-forest-focus-ring: rgba(16, 185, 129, 0.25);
+  --color-primary-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  --color-primary-shadow-hover: 0 4px 14px rgba(16, 185, 129, 0.4);
+
+  --surface-app: #051410;
+  --surface-card: #0A1F19;
+  --surface-card-alt: #0E2922;
+  --surface-sidebar: #021611;
+  --surface-sunken: #11332A;
+  --border-hairline: #174236;
+  --border-hairline-strong: #235C4C;
+
+  --sidebar-border: #174236;
+  --sidebar-heading: #ECFDF5;
+  --sidebar-text: #A1BFB2;
+  --sidebar-text-muted: #6B8E80;
+  --sidebar-link-hover-bg: #0F2922;
+  --sidebar-link-active-bg: rgba(16, 185, 129, 0.25);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #34D399;
+  --sidebar-link-active-glow: #34D399;
+
+  --banner-bg: linear-gradient(120deg, #022C22, #064E3B);
+  --banner-border: 1px solid #174236;
+  --banner-text: #ECFDF5;
+  --banner-text-muted: #A1BFB2;
+  --banner-eyebrow: #34D399;
+  --banner-glow: radial-gradient(circle, rgba(16, 185, 129, 0.2), transparent 70%);
+
+  --text-primary: #ECFDF5;
+  --text-secondary: #A1BFB2;
+  --text-muted: #6B8E80;
+}
+
+/* ==========================================================================
+   THEME 3: Oceanic Teal & Marine (Calm & Trust)
+   ========================================================================== */
+html[data-color-theme="teal"] {
+  --color-forest-deep: #115E59;
+  --color-forest: #0D9488;
+  --color-forest-hover: #0F766E;
+  --color-sage: #99F6E4;
+  --color-ivory: #F0FDFB;
+  --color-beige: #E1F8F5;
+  --color-terracotta: #F97316;
+  --color-terracotta-dark: #C2410C;
+  --color-charcoal: #0F282F;
+
+  --color-tint: #CCFBF1;
+  --color-forest-focus-ring: rgba(13, 148, 136, 0.18);
+  --color-primary-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
+  --color-primary-shadow-hover: 0 4px 14px rgba(13, 148, 136, 0.35);
+
+  --surface-app: var(--color-ivory);
+  --surface-card: #FFFFFF;
+  --surface-card-alt: #E6FAF6;
+  --surface-sidebar: #0F3D3E;
+  --surface-sunken: #DBF2EE;
+  --border-hairline: #C8ECE6;
+  --border-hairline-strong: #9ADBD0;
+
+  --sidebar-border: rgba(255,255,255,0.08);
+  --sidebar-heading: #F0FDFA;
+  --sidebar-text: #90B7B8;
+  --sidebar-text-muted: #90B7B8;
+  --sidebar-link-hover-bg: rgba(255,255,255,0.06);
+  --sidebar-link-active-bg: rgba(13, 148, 136, 0.28);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #2DD4BF;
+  --sidebar-link-active-glow: #2DD4BF;
+
+  --banner-bg: linear-gradient(120deg, #0F3D3E, #0D9488);
+  --banner-border: none;
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #C8ECE6;
+  --banner-eyebrow: #99F6E4;
+  --banner-glow: radial-gradient(circle, rgba(153, 246, 228, 0.25), transparent 70%);
+
+  --text-primary: var(--color-charcoal);
+  --text-secondary: #285458;
+  --text-muted: #577F83;
+  --color-heading: var(--color-forest-deep);
+}
+
+html[data-color-theme="teal"][data-theme="dark"] {
+  --color-forest-deep: #042F2E;
+  --color-forest: #14B8A6;
+  --color-forest-hover: #2DD4BF;
+  --color-sage: #2DD4BF;
+  --color-ivory: #041416;
+  --color-beige: #072224;
+  --color-terracotta: #FB923C;
+  --color-terracotta-dark: #F97316;
+  --color-charcoal: #F0FDFA;
+  --color-heading: #F0FDFA;
+
+  --color-tint: #072B2E;
+  --color-forest-focus-ring: rgba(20, 184, 166, 0.25);
+  --color-primary-shadow: 0 2px 8px rgba(20, 184, 166, 0.3);
+  --color-primary-shadow-hover: 0 4px 14px rgba(20, 184, 166, 0.4);
+
+  --surface-app: #041416;
+  --surface-card: #0A1E21;
+  --surface-card-alt: #0F2A2E;
+  --surface-sidebar: #021113;
+  --surface-sunken: #12363B;
+  --border-hairline: #18484E;
+  --border-hairline-strong: #23636B;
+
+  --sidebar-border: #18484E;
+  --sidebar-heading: #F0FDFA;
+  --sidebar-text: #90B7B8;
+  --sidebar-text-muted: #5F8385;
+  --sidebar-link-hover-bg: #0F2A2E;
+  --sidebar-link-active-bg: rgba(20, 184, 166, 0.25);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #2DD4BF;
+  --sidebar-link-active-glow: #2DD4BF;
+
+  --banner-bg: linear-gradient(120deg, #042F2E, #115E59);
+  --banner-border: 1px solid #18484E;
+  --banner-text: #F0FDFA;
+  --banner-text-muted: #90B7B8;
+  --banner-eyebrow: #2DD4BF;
+  --banner-glow: radial-gradient(circle, rgba(20, 184, 166, 0.2), transparent 70%);
+
+  --text-primary: #F0FDFA;
+  --text-secondary: #90B7B8;
+  --text-muted: #5F8385;
+}
+
+/* ==========================================================================
+   THEME 4: Royal Amethyst & Violet (Dignity & Care)
+   ========================================================================== */
+html[data-color-theme="amethyst"] {
+  --color-forest-deep: #3B166A;
+  --color-forest: #7C3AED;
+  --color-forest-hover: #6D28D9;
+  --color-sage: #DDD6FE;
+  --color-ivory: #FAF7FE;
+  --color-beige: #F1E9FC;
+  --color-terracotta: #F59E0B;
+  --color-terracotta-dark: #D97706;
+  --color-charcoal: #1C1130;
+
+  --color-tint: #F3E8FF;
+  --color-forest-focus-ring: rgba(124, 58, 237, 0.18);
+  --color-primary-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+  --color-primary-shadow-hover: 0 4px 14px rgba(124, 58, 237, 0.35);
+
+  --surface-app: var(--color-ivory);
+  --surface-card: #FFFFFF;
+  --surface-card-alt: #F4ECFB;
+  --surface-sidebar: #240C4D;
+  --surface-sunken: #EDE2F8;
+  --border-hairline: #E3D2F4;
+  --border-hairline-strong: #CBB0E8;
+
+  --sidebar-border: rgba(255,255,255,0.08);
+  --sidebar-heading: #FAF5FF;
+  --sidebar-text: #B1A3C9;
+  --sidebar-text-muted: #B1A3C9;
+  --sidebar-link-hover-bg: rgba(255,255,255,0.06);
+  --sidebar-link-active-bg: rgba(124, 58, 237, 0.28);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #C4B5FD;
+  --sidebar-link-active-glow: #C4B5FD;
+
+  --banner-bg: linear-gradient(120deg, #240C4D, #7C3AED);
+  --banner-border: none;
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #E3D2F4;
+  --banner-eyebrow: #DDD6FE;
+  --banner-glow: radial-gradient(circle, rgba(221, 214, 254, 0.25), transparent 70%);
+
+  --text-primary: var(--color-charcoal);
+  --text-secondary: #483861;
+  --text-muted: #74648C;
+  --color-heading: var(--color-forest-deep);
+}
+
+html[data-color-theme="amethyst"][data-theme="dark"] {
+  --color-forest-deep: #2E1065;
+  --color-forest: #8B5CF6;
+  --color-forest-hover: #A78BFA;
+  --color-sage: #A78BFA;
+  --color-ivory: #0D0818;
+  --color-beige: #1A102E;
+  --color-terracotta: #FBBF24;
+  --color-terracotta-dark: #F59E0B;
+  --color-charcoal: #FAF5FF;
+  --color-heading: #FAF5FF;
+
+  --color-tint: #241444;
+  --color-forest-focus-ring: rgba(139, 92, 246, 0.25);
+  --color-primary-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+  --color-primary-shadow-hover: 0 4px 14px rgba(139, 92, 246, 0.4);
+
+  --surface-app: #0D0818;
+  --surface-card: #150E24;
+  --surface-card-alt: #1E1433;
+  --surface-sidebar: #080410;
+  --surface-sunken: #281B44;
+  --border-hairline: #332354;
+  --border-hairline-strong: #4B3678;
+
+  --sidebar-border: #332354;
+  --sidebar-heading: #FAF5FF;
+  --sidebar-text: #B1A3C9;
+  --sidebar-text-muted: #7A6F91;
+  --sidebar-link-hover-bg: #1E1433;
+  --sidebar-link-active-bg: rgba(139, 92, 246, 0.25);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #C4B5FD;
+  --sidebar-link-active-glow: #C4B5FD;
+
+  --banner-bg: linear-gradient(120deg, #1C0A38, #3B166A);
+  --banner-border: 1px solid #332354;
+  --banner-text: #FAF5FF;
+  --banner-text-muted: #B1A3C9;
+  --banner-eyebrow: #A78BFA;
+  --banner-glow: radial-gradient(circle, rgba(139, 92, 246, 0.2), transparent 70%);
+
+  --text-primary: #FAF5FF;
+  --text-secondary: #B1A3C9;
+  --text-muted: #7A6F91;
+}
+
+/* ==========================================================================
+   THEME 5: Electric Sapphire & Cobalt (Tech-Forward Navy)
+   ========================================================================== */
+html[data-color-theme="sapphire"] {
+  --color-forest-deep: #0F172A;
+  --color-forest: #2563EB;
+  --color-forest-hover: #1D4ED8;
+  --color-sage: #93C5FD;
+  --color-ivory: #F8FAFC;
+  --color-beige: #F1F5F9;
+  --color-terracotta: #F59E0B;
+  --color-terracotta-dark: #D97706;
+  --color-charcoal: #0F172A;
+
+  --color-tint: #EFF6FF;
+  --color-forest-focus-ring: rgba(37, 99, 235, 0.18);
+  --color-primary-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  --color-primary-shadow-hover: 0 4px 14px rgba(37, 99, 235, 0.35);
+
+  --surface-app: var(--color-ivory);
+  --surface-card: #FFFFFF;
+  --surface-card-alt: var(--color-beige);
+  --surface-sidebar: #0F172A;
+  --surface-sunken: #E2E8F0;
+  --border-hairline: #E2E8F0;
+  --border-hairline-strong: #CBD5E1;
+
+  --sidebar-border: rgba(255,255,255,0.08);
+  --sidebar-heading: #F8FAFC;
+  --sidebar-text: #94A3B8;
+  --sidebar-text-muted: #94A3B8;
+  --sidebar-link-hover-bg: rgba(255,255,255,0.06);
+  --sidebar-link-active-bg: rgba(37, 99, 235, 0.24);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #60A5FA;
+  --sidebar-link-active-glow: #60A5FA;
+
+  --banner-bg: linear-gradient(120deg, #0F172A, #2563EB);
+  --banner-border: none;
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #E2E8F0;
+  --banner-eyebrow: #93C5FD;
+  --banner-glow: radial-gradient(circle, rgba(147, 197, 253, 0.25), transparent 70%);
+
+  --text-primary: var(--color-charcoal);
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  --color-heading: var(--color-forest-deep);
+}
+
+html[data-color-theme="sapphire"][data-theme="dark"] {
+  --color-forest-deep: #0B0F19;
+  --color-forest: #3B82F6;
+  --color-forest-hover: #60A5FA;
+  --color-sage: #60A5FA;
+  --color-ivory: #0B0F17;
+  --color-beige: #131B2A;
+  --color-terracotta: #FBBF24;
+  --color-terracotta-dark: #F59E0B;
+  --color-charcoal: #F8FAFC;
+  --color-heading: #F8FAFC;
+
+  --color-tint: #14233C;
+  --color-forest-focus-ring: rgba(59, 130, 246, 0.25);
+  --color-primary-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  --color-primary-shadow-hover: 0 4px 14px rgba(59, 130, 246, 0.4);
+
+  --surface-app: #0B0F17;
+  --surface-card: #111827;
+  --surface-card-alt: #172033;
+  --surface-sidebar: #070A10;
+  --surface-sunken: #172132;
+  --border-hairline: #1E293B;
+  --border-hairline-strong: #334155;
+
+  --sidebar-border: #1E293B;
+  --sidebar-heading: #F8FAFC;
+  --sidebar-text: #94A3B8;
+  --sidebar-text-muted: #64748B;
+  --sidebar-link-hover-bg: #172033;
+  --sidebar-link-active-bg: rgba(59, 130, 246, 0.25);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #93C5FD;
+  --sidebar-link-active-glow: #93C5FD;
+
+  --banner-bg: linear-gradient(120deg, #070A10, #1E293B);
+  --banner-border: 1px solid #1E293B;
+  --banner-text: #F8FAFC;
+  --banner-text-muted: #94A3B8;
+  --banner-eyebrow: #60A5FA;
+  --banner-glow: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%);
+
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+}
+
+/* ==========================================================================
+   THEME 6: Rose & Cranberry (Vitality & Compassion)
+   ========================================================================== */
+html[data-color-theme="rose"] {
+  --color-forest-deep: #70112A;
+  --color-forest: #E11D48;
+  --color-forest-hover: #BE123C;
+  --color-sage: #FECDD3;
+  --color-ivory: #FFF5F7;
+  --color-beige: #FFE4E9;
+  --color-terracotta: #D97706;
+  --color-terracotta-dark: #B45309;
+  --color-charcoal: #280E16;
+
+  --color-tint: #FFE4E8;
+  --color-forest-focus-ring: rgba(225, 29, 72, 0.18);
+  --color-primary-shadow: 0 2px 8px rgba(225, 29, 72, 0.25);
+  --color-primary-shadow-hover: 0 4px 14px rgba(225, 29, 72, 0.35);
+
+  --surface-app: var(--color-ivory);
+  --surface-card: #FFFFFF;
+  --surface-card-alt: #FCE8EC;
+  --surface-sidebar: #400615;
+  --surface-sunken: #F5D9E0;
+  --border-hairline: #EFC4CD;
+  --border-hairline-strong: #D996A5;
+
+  --sidebar-border: rgba(255,255,255,0.08);
+  --sidebar-heading: #FFF1F2;
+  --sidebar-text: #FDA4AF;
+  --sidebar-text-muted: #FDA4AF;
+  --sidebar-link-hover-bg: rgba(255,255,255,0.06);
+  --sidebar-link-active-bg: rgba(225, 29, 72, 0.24);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #FB7185;
+  --sidebar-link-active-glow: #FB7185;
+
+  --banner-bg: linear-gradient(120deg, #400615, #E11D48);
+  --banner-border: none;
+  --banner-text: #FFFFFF;
+  --banner-text-muted: #FFE4E9;
+  --banner-eyebrow: #FECDD3;
+  --banner-glow: radial-gradient(circle, rgba(254, 205, 211, 0.25), transparent 70%);
+
+  --text-primary: var(--color-charcoal);
+  --text-secondary: #572A36;
+  --text-muted: #855361;
+  --color-heading: var(--color-forest-deep);
+}
+
+html[data-color-theme="rose"][data-theme="dark"] {
+  --color-forest-deep: #4C0519;
+  --color-forest: #F43F5E;
+  --color-forest-hover: #FB7185;
+  --color-sage: #FB7185;
+  --color-ivory: #15050A;
+  --color-beige: #240A12;
+  --color-terracotta: #FBBF24;
+  --color-terracotta-dark: #F59E0B;
+  --color-charcoal: #FFF1F2;
+  --color-heading: #FFF1F2;
+
+  --color-tint: #330B19;
+  --color-forest-focus-ring: rgba(244, 63, 94, 0.25);
+  --color-primary-shadow: 0 2px 8px rgba(244, 63, 94, 0.3);
+  --color-primary-shadow-hover: 0 4px 14px rgba(244, 63, 94, 0.4);
+
+  --surface-app: #15050A;
+  --surface-card: #200810;
+  --surface-card-alt: #2B0C17;
+  --surface-sidebar: #0C0205;
+  --surface-sunken: #3A101F;
+  --border-hairline: #4A1628;
+  --border-hairline-strong: #6B223B;
+
+  --sidebar-border: #4A1628;
+  --sidebar-heading: #FFF1F2;
+  --sidebar-text: #CFA6B2;
+  --sidebar-text-muted: #926E7A;
+  --sidebar-link-hover-bg: #2B0C17;
+  --sidebar-link-active-bg: rgba(244, 63, 94, 0.25);
+  --sidebar-link-active-text: #FFFFFF;
+  --sidebar-link-active-icon: #FDA4AF;
+  --sidebar-link-active-glow: #FDA4AF;
+
+  --banner-bg: linear-gradient(120deg, #330511, #4C0519);
+  --banner-border: 1px solid #4A1628;
+  --banner-text: #FFF1F2;
+  --banner-text-muted: #CFA6B2;
+  --banner-eyebrow: #FB7185;
+  --banner-glow: radial-gradient(circle, rgba(244, 63, 94, 0.2), transparent 70%);
+
+  --text-primary: #FFF1F2;
+  --text-secondary: #CFA6B2;
+  --text-muted: #926E7A;
+}
+
+/* ==========================================================================
+   General Dark Mode Overrides (Status & Shadows)
+   ========================================================================== */
+[data-theme="dark"] {
+  --status-stable-bg: #064E3B;
+  --status-stable-fg: #34D399;
+  --status-attention-bg: #78350F;
+  --status-attention-fg: #FCD34D;
+  --status-critical-bg: #881337;
+  --status-critical-fg: #FDA4AF;
+  --status-neutral-bg: #1E293B;
+  --status-neutral-fg: #94A3B8;
+
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.45), 0 6px 20px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 4px 14px rgba(0, 0, 0, 0.55), 0 14px 34px rgba(0, 0, 0, 0.45);
+}

@@ -1,0 +1,298 @@
+/* ============================================================
+   Google Dark Mode Account Chooser Styles
+   Matches official Google Accounts popup (accounts.google.com)
+   ============================================================ */
+
+.google-dark-window {
+  min-height: 100vh;
+  background-color: #131314;
+  color: #e3e3e3;
+  font-family: 'Google Sans', Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  user-select: none;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Chrome Address Bar Replica */
+.google-dark-topbar {
+  width: 100%;
+  background: #1f1f20;
+  border-bottom: 1px solid #2d2e30;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+}
+
+.google-dark-origin {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2a2b2d;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 11.5px;
+  color: #bdc1c6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.google-dark-url {
+  color: #e8eaed;
+  letter-spacing: 0.01em;
+}
+
+/* Main Card */
+.google-dark-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 10px;
+}
+
+/* Progress Bar */
+.google-dark-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #202124;
+  overflow: hidden;
+}
+
+.google-dark-progress-bar {
+  height: 100%;
+  background: #8ab4f8;
+  animation: googleBarAnim 1.2s infinite ease-in-out;
+}
+
+@keyframes googleBarAnim {
+  0% { transform: translateX(-100%); width: 50%; }
+  50% { transform: translateX(50%); width: 70%; }
+  100% { transform: translateX(200%); width: 40%; }
+}
+
+/* Google Brand Header */
+.google-dark-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  color: #e3e3e3;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.google-dark-glogo {
+  width: 22px;
+  height: 22px;
+}
+
+/* Heading */
+.google-dark-title {
+  font-size: 28px;
+  font-weight: 400;
+  color: #f2f2f2;
+  margin: 0 0 8px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.google-dark-sub {
+  font-size: 15px;
+  color: #c4c7c5;
+  margin: 0 0 26px;
+  line-height: 1.4;
+}
+
+.google-dark-appname {
+  color: #a8c7fa;
+  font-weight: 500;
+}
+
+/* Account List */
+.google-dark-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #2d2f31;
+  border-bottom: 1px solid #2d2f31;
+  margin-bottom: 24px;
+}
+
+.google-dark-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 10px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-radius: 4px;
+}
+
+.google-dark-item:hover {
+  background-color: #28292a;
+}
+
+.google-dark-item.selected {
+  background-color: #303134;
+}
+
+.google-dark-avatar-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3c4043;
+}
+
+.google-dark-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.google-dark-avatar-init {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  background: #1a73e8;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-dark-avatar-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #282a2d;
+}
+
+.google-dark-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.google-dark-name {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #e3e3e3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.google-dark-email {
+  font-size: 13px;
+  color: #9aa0a6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.google-dark-item.use-another .google-dark-name {
+  color: #e3e3e3;
+  font-weight: 400;
+}
+
+/* Other account form */
+.google-dark-other-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.google-dark-back-btn {
+  background: none;
+  border: none;
+  color: #a8c7fa;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.google-dark-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.google-dark-field label {
+  font-size: 12px;
+  color: #c4c7c5;
+}
+
+.google-dark-field input {
+  background: #1e1f20;
+  border: 1px solid #444746;
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #e3e3e3;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.google-dark-field input:focus {
+  border-color: #a8c7fa;
+  box-shadow: 0 0 0 1px #a8c7fa;
+}
+
+.google-dark-error {
+  color: #f2b8b5;
+  font-size: 12px;
+}
+
+.google-dark-next-btn {
+  background: #a8c7fa;
+  color: #062e6f;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 24px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 6px;
+  transition: background 0.15s ease;
+}
+
+.google-dark-next-btn:hover {
+  background: #c2e7ff;
+}
+
+/* Footer Notice */
+.google-dark-footer {
+  font-size: 12px;
+  color: #8e918f;
+  line-height: 1.5;
+  margin-top: 16px;
+}
